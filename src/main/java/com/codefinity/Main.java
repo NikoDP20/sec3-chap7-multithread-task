@@ -11,7 +11,7 @@ public class Main {
                 new File("file2.txt"),
                 new File("file3.txt")
         };
-        //TODO: Implement an ExecutorService initialization lock with 3 threads here and run these 3 threads
 
+        //TODO: Implement an ExecutorService initialization lock with 3 threads here and run these 3 threads
     }
 }
