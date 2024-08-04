@@ -1,21 +1,16 @@
- <h1>Parallel Word Count Using ExecutorService</h1>
+<h1>Challenge Executors</h1>
 
-  <h2>Description</h2>
-  <p>In this project, you will process a list of files in parallel, reading lines of text and counting the number of words in each line. The task utilizes <code>ExecutorService</code> and a thread pool to manage concurrent file processing.</p>
+<p><strong>Description:</strong></p>
+<p>Imagine you have a list of files, each containing lines of text. Your task is to read the lines from these files in parallel and count the number of words in each line. Use <code>ExecutorService</code>, <code>Future</code>, and a thread pool to complete the task.</p>
 
-  <h2>Requirements</h2>
-  <ol>
-      <li><strong>Create a Thread Pool:</strong> Use <code>Executors.newFixedThreadPool(int nThreads)</code> to create a fixed-size thread pool, where <code>nThreads</code> is the number of threads in the pool.</li>
-      <li><strong>Task Implementation:</strong> Implement a <code>WordCountTask</code> class that implements the <code>Runnable</code> interface. This class should:
-          <ul>
-              <li>Receive a file as input.</li>
-              <li>In the <code>run</code> method, read lines from the file, count the number of words in each line, and output the result to the console.</li>
-          </ul>
-      </li>
-      <li><strong>Using ExecutorService:</strong> Utilize <code>ExecutorService</code> to submit jobs to the thread pool for execution. These jobs should use the <code>WordCountTask</code> class.</li>
-      <li><strong>Correct Shutdown:</strong> After all jobs have been submitted, properly shut down the thread pool using the <code>shutdown()</code> method and wait for all threads to finish executing.</li>
-  </ol>
+<h2>Requirements:</h2>
+<ol>
+    <li><strong>Creating a Thread Pool:</strong> Create a fixed-size thread pool using <code>Executors.newFixedThreadPool(int nThreads)</code>, where <code>nThreads</code> is the number of threads in the pool.</li>
+    <li><strong>Task Implementation:</strong> Implement a class <code>WordCountTask</code> that implements the <code>Callable&lt;String&gt;</code> interface and takes a file as input. In the <code>call</code> method of this class, read the lines from the file, count the number of words in each line, and print the result to the console.</li>
+    <li><strong>Using <code>ExecutorService</code>:</strong> Use <code>ExecutorService</code> to submit tasks to the thread pool. The tasks should use the <code>WordCountTask</code> class.</li>
+</ol>
 
-  <h2>Important Notes</h2>
-  <p class="important">The files for processing are already included in the project. Do not create or modify these files!</p>
-  <p class="important">Only implement the methods required for the task. Do not alter any other part of the codebase!</p>
+<p>Additionally, the string that you generate in a separate thread should be returned, and using the <code>get()</code> method of the <code>Future</code> interface, retrieve the result of the thread execution and print it to the console in the main method.</p>
+
+<p>In the string returned by the thread, use the following format:</p>
+<pre><code>String.format("File: %s | Line: %s | Word Count %d")</code></pre>
