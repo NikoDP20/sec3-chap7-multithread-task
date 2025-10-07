@@ -13,5 +13,10 @@ public class Main {
         };
 
         //TODO: Implement an ExecutorService initialization lock with 3 threads here and run these 3 threads
+        ExecutorService executorService = Executors.newFixedThreadPool(3);
+        for (File file : files) {
+            executorService.submit(new WordCountTask(file));
+        }
+        executorService.shutdown();
     }
 }

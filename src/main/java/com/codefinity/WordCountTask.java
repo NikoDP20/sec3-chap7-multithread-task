@@ -17,7 +17,20 @@ public class WordCountTask implements Callable<String> {
     public String call() {
         //TODO: Implement reading a string from a file,
         // counting the number of words, and output all the information to the console
-        return "";
+        int wordCount = 0;
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] words = line.trim().split("\\s+");
+                wordCount += words.length;
+            }
+            String result = "File: " + file.getName() + ", Word Count: " + wordCount;
+            System.out.println(result);
+            return result;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "Error processing file: " + file.getName();
+        }
     }
 }
 
